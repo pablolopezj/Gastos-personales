@@ -1,6 +1,6 @@
-# expense_planner
+# Gastos personales
 
-A new Flutter project.
+Flutter project.
 
 ## Getting Started
 
