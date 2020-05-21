@@ -14,15 +14,13 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if ( enteredTitle.isEmpty || enteredAmount <= 0 ) {
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    
-    
 
     widget.addNewTransaction(
       enteredTitle,
@@ -44,7 +42,7 @@ class _NewTransactionState extends State<NewTransaction> {
                   labelText: 'Title',
                 ),
                 controller: titleController,
-                onSubmitted: (_) => submitData(),
+                onSubmitted: (_) => _submitData(),
                 //onChanged: (val) => titleInput = val,
               ),
               TextField(
@@ -53,13 +51,30 @@ class _NewTransactionState extends State<NewTransaction> {
                 ),
                 controller: amountController,
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
-                onSubmitted: (_) => submitData(),
+                onSubmitted: (_) => _submitData(),
                 //onChanged: (val) => amountInput = val,
               ),
-              FlatButton(
-                textColor: Colors.purple,
+              Container(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Text('No date choosen!'),
+                    FlatButton(
+                      textColor: Theme.of(context).primaryColor,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {},
+                    )
+                  ],
+                ),
+              ),
+              RaisedButton(
+                color: Theme.of(context).primaryColor,
+                textColor: Theme.of(context).textTheme.button.color,
                 child: Text('Add Transaction'),
-                onPressed: submitData,
+                onPressed: _submitData,
               ),
             ]),
       ),
