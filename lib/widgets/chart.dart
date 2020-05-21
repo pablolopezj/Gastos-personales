@@ -53,7 +53,7 @@ class Chart extends StatelessWidget {
           children: groupedTransactionValues.map((data) {
             return Flexible(
               flex: 1,
-              fit: FlexFit.tight, 
+              fit: FlexFit.tight,
               child: ChartBar(
                 data['day'],
                 data['amount'],
